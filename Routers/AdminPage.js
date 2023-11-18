@@ -13,14 +13,16 @@ router.post("/login", async (req, res) => {
   try {
     const admin = await AdminModel.findOne({ email: req.body.email });
     if (!admin) {
-      return res.status(403).json({ message: "no user found" });
+      res.status(403).json({ message: "no user found" });
+      return;
     }
     const verification = await passwordComparing(
       req.body.password,
       admin.password
     );
     if (!verification) {
-      return res.status(403).json({ message: "Invalid credential " });
+      res.status(403).json({ message: "Invalid credential " });
+      return;
     }
     //token generating
     const token = await generateToken(req.body.email);
