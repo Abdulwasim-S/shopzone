@@ -4,7 +4,7 @@ import { ProductModel } from "../Helper/mongoose_scheme.js";
 const router = express.Router();
 router.get("/", (req, res) => {
   try {
-    res.status(403).json({ message: "working fine" });
+    res.status(200).json({ message: "working" });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
