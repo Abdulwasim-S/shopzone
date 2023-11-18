@@ -11,9 +11,11 @@ import { isAuth } from "./Helper/isAuth.js";
 const app = express();
 const { PORT } = process.env;
 
+await db_connection();
+
 app.use(cors({ origin: "*" }));
 app.use(express.json());
-await db_connection();
+
 app.use("/", RouterPage);
 app.use("/admin", AdminPage);
 app.use("/user", UserPage);
