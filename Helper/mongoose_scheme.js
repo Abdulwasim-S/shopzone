@@ -47,21 +47,7 @@ const productSchema = await mongoose.Schema({
     type: String,
     required: true,
   },
-  discription: {
-    type: String,
-    required: true,
-  },
-  specification: {
-    type: String,
-    required: true,
-    default: "",
-  },
-  hash_tags: {
-    type: String,
-    required: true,
-    default: "",
-  },
-  category: {
+  description: {
     type: String,
     required: true,
   },
@@ -69,6 +55,11 @@ const productSchema = await mongoose.Schema({
     type: String,
     required: true,
     default: "available",
+  },
+  date: {
+    type: String,
+    required: true,
+    default: new Date(),
   },
 });
 
