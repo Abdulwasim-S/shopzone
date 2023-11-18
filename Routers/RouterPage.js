@@ -3,7 +3,7 @@ import { ProductModel } from "../Helper/mongoose_scheme.js";
 
 const router = express.Router();
 router.get("/", () => {
-  res.send({ message: "working" });
+  res.status(200).json({ message: "working" });
 });
 router.get("/products", async (req, res) => {
   try {
