@@ -18,7 +18,7 @@ router.post("/addProduct", async (req, res) => {
     res.status(200).json({ message: "SignUp Success", new_product });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Unable to Add", error });
+    res.status(501).json({ message: "Unable to Add", error });
   }
 });
 //Delete Product
