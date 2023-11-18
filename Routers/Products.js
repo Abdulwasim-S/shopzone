@@ -13,10 +13,7 @@ router.post("/addProduct", async (req, res) => {
       product_name: req.body.product_name,
       image_url: req.body.image_url,
       price: req.body.price,
-      discription: req.body.discription,
-      specification: req.body.specification,
-      hash_tags: req.body.hash_tags,
-      category: req.body.category,
+      description: req.body.description,
     }).save();
     res.status(200).json({ message: "SignUp Success", new_product });
   } catch (error) {
@@ -36,18 +33,26 @@ router.delete("/delete:id", async (req, res) => {
   }
 });
 //Update Product
-router.post("/addProduct", async (req, res) => {
+router.put("/editProduct:id", async (req, res) => {
   try {
-    const new_product = await ProductModel({
-      product_name: req.body.product_name,
-      image_url: req.body.image_url,
-      price: req.body.price,
-      discription: req.body.discription,
-      specification: req.body.specification,
-      hash_tags: req.body.hash_tags,
-      category: req.body.category,
-    }).save();
-    res.status(200).json({ message: "SignUp Success", new_product });
+    const { id } = req.params;
+    console.log(id);
+    const updated_product = await ProductModel.updateOne(
+      { _id: id },
+      {
+        product_name: req.body.product_name,
+        image_url: req.body.image_url,
+        price: req.body.price,
+        description: req.body.description,
+      }
+    )
+      .then((updated_product) =>
+        res.status(200).json({ message: "Update Success", updated_product })
+      )
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json({ message: "Unable to Update", error });
+      });
   } catch (error) {
     console.log(error);
   }
