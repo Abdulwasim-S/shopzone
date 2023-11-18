@@ -52,9 +52,9 @@ const productSchema = await mongoose.Schema({
     required: true,
   },
   status: {
-    type: String,
+    type: Boolean,
     required: true,
-    default: "available",
+    default: true,
   },
   date: {
     type: String,
