@@ -34,7 +34,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 //Update Product
-router.put("/editProduct:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     console.log(id);
