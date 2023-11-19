@@ -19,6 +19,10 @@ const userSchema = await mongoose.Schema({
     type: String,
     required: true,
   },
+  mobile: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,

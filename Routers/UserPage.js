@@ -41,6 +41,7 @@ router.post("/signup", async (req, res) => {
     const hashedPassword = await passwordHashing(req.body.password);
     const newUser = await UserModel({
       userName: req.body.userName,
+      mobile: req.body.mobile,
       email: req.body.email,
       password: hashedPassword,
     }).save();
