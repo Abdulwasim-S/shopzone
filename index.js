@@ -6,7 +6,8 @@ import { RouterPage } from "./Routers/RouterPage.js";
 import { AdminPage } from "./Routers/AdminPage.js";
 import { UserPage } from "./Routers/UserPage.js";
 import { ProductsPage } from "./Routers/Products.js";
-import { isAuth } from "./Helper/isAuth.js";
+import { isAuth, isAuthUser } from "./Helper/isAuth.js";
+import { CartModel } from "./Helper/mongoose_scheme.js";
 
 const app = express();
 const { PORT } = process.env;
@@ -20,5 +21,6 @@ app.use("/", RouterPage);
 app.use("/admin", AdminPage);
 app.use("/user", UserPage);
 app.use("/products", isAuth, ProductsPage);
+app.use("/cart", isAuthUser, CartModel);
 
 app.listen(PORT, () => console.log("Listning in port :", PORT));
