@@ -27,13 +27,13 @@ router.post("/add-item", async (req, res) => {
     if (!user) {
       return res.status(403).json({ message: "no user found" });
     }
-    const newCartItem = await UserModel({
+    const newCartItem = await CartModel({
       email: req.headers.email,
-      product_id: req.body._id,
+      product_id: req.body.id,
     }).save();
-    res.status(200).json({ message: "cart items", cartItems });
+    res.status(200).json({ message: "cart items", newCartItem });
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({ message: "error...", error });
   }
 });
 //delete user cart items
