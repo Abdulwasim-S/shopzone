@@ -14,10 +14,7 @@ router.post("/", async (req, res) => {
     if (!user) {
       return res.status(403).json({ message: "no user found" });
     }
-    const datas = await CartModel.find({ email: req.headers.email });
-    const items = datas.map((ele) => {
-      return ele.product_id;
-    });
+    const items = await CartModel.find({ email: req.headers.email });
     res.status(200).json({ message: "cart items", items });
   } catch (error) {
     res.status(500).json({ error });
@@ -33,6 +30,10 @@ router.post("/add-item", async (req, res) => {
     const newCartItem = await CartModel({
       email: req.headers.email,
       product_id: req.body.id,
+      product_name: req.body.product_name,
+      description: req.body.description,
+      price: req.body.price,
+      image_url: req.body.image_url,
     }).save();
     res.status(200).json({ message: "cart items", newCartItem });
   } catch (error) {
