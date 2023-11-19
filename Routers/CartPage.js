@@ -29,7 +29,7 @@ router.post("/add-item", async (req, res) => {
     }
     const newCartItem = await CartModel({
       email: req.headers.email,
-      product_id: req.body.id,
+      product_id: req.body._id,
       product_name: req.body.product_name,
       description: req.body.description,
       price: req.body.price,
