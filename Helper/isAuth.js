@@ -22,7 +22,7 @@ const isAuthUser = async (req, res, next) => {
   let token;
   if (req.headers) {
     try {
-      token = await req.headers["x-auth-token"];
+      token = await req.headers["x-auth-token-user"];
       const decode = jwt.verify(token, process.env.SECRET_KEY_USER);
       if (decode) {
         next();
