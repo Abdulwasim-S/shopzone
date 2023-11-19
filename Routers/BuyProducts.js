@@ -15,7 +15,7 @@ router.post("/addProduct", async (req, res) => {
       price: req.body.price,
       description: req.body.description,
     }).save();
-    res.status(200).json({ message: "SignUp Success", new_product });
+    res.status(200).json({ message: "Added Success", new_product });
   } catch (error) {
     console.log(error);
     res.status(501).json({ message: "Unable to Add", error });

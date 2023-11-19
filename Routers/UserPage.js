@@ -54,4 +54,14 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+//myorders
+router.post("/myorders", async (req, res) => {
+  try {
+    const items = await OrderModel.find({ email: req.headers.email });
+    res.status(200).json({ message: "My orders", items });
+  } catch (error) {
+    res.status(500).json({ message: "error", error });
+  }
+});
+
 export const UserPage = router;
