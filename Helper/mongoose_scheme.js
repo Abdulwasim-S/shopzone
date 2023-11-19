@@ -95,31 +95,13 @@ const ordersSchema = await mongoose.Schema({
   },
 });
 const cartSchema = await mongoose.Schema({
-  product_name: {
+  email: {
     type: String,
     required: true,
   },
-  image_url: {
+  product_id: {
     type: String,
     required: true,
-  },
-  price: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  status: {
-    type: Boolean,
-    required: true,
-    default: true,
-  },
-  date: {
-    type: String,
-    required: true,
-    default: new Date(),
   },
 });
 
