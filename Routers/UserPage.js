@@ -1,5 +1,5 @@
 import express from "express";
-import { UserModel } from "../Helper/mongoose_scheme.js";
+import { OrderModel, UserModel } from "../Helper/mongoose_scheme.js";
 import { generateUserToken } from "../Helper/generateToken.js";
 import { passwordComparing, passwordHashing } from "../Helper/hashPassword.js";
 
@@ -24,14 +24,12 @@ router.post("/login", async (req, res) => {
     }
     //token generating
     const token = await generateUserToken(req.body.email);
-    res
-      .status(200)
-      .json({
-        message: "login success",
-        token,
-        email: user.email,
-        userName: user.userName,
-      });
+    res.status(200).json({
+      message: "login success",
+      token,
+      email: user.email,
+      userName: user.userName,
+    });
   } catch (error) {
     console.log(error);
   }
@@ -55,4 +53,5 @@ router.post("/signup", async (req, res) => {
     res.status(500).json({ message: "Unable to signup", error });
   }
 });
+
 export const UserPage = router;

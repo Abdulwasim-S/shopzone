@@ -62,12 +62,28 @@ const productSchema = await mongoose.Schema({
   },
 });
 const ordersSchema = await mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  mobile: {
+    type: String,
+    required: true,
+  },
   product_name: {
     type: String,
     required: true,
   },
   image_url: {
     type: String,
+    required: true,
+  },
+  quantity: {
+    type: Number,
     required: true,
   },
   price: {
@@ -77,11 +93,6 @@ const ordersSchema = await mongoose.Schema({
   description: {
     type: String,
     required: true,
-  },
-  status: {
-    type: Boolean,
-    required: true,
-    default: true,
   },
   order_status: {
     type: String,
