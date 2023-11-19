@@ -32,8 +32,8 @@ router.put("/:id", async (req, res) => {
         order_status: req.body.order_status,
       }
     );
-    const item = await OrderModel.find({ _id: id });
-    res.status(200).json({ message: "Update Success", item });
+    const items = await OrderModel.find({ _id: id });
+    res.status(200).json({ message: "Update Success", item: items[0] });
   } catch (error) {
     res.status(500).json({ message: "Unable to Update", error });
   }
