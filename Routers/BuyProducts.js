@@ -29,10 +29,11 @@ router.put("/:id", async (req, res) => {
     const updated_order = await OrderModel.updateOne(
       { _id: id },
       {
-        order_status: req.body.status,
+        order_status: req.body.order_status,
       }
     );
-    res.status(200).json({ message: "Update Success", item: updated_order });
+    const item = await OrderModel.find({ _id: id });
+    res.status(200).json({ message: "Update Success", item });
   } catch (error) {
     res.status(500).json({ message: "Unable to Update", error });
   }
