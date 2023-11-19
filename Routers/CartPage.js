@@ -1,12 +1,16 @@
 import express from "express";
-import { CartModel, UserModel } from "../Helper/mongoose_scheme";
+import { CartModel, UserModel } from "../Helper/mongoose_scheme.js";
 
 const router = express.Router();
 
+//Check cart
+router.get("/", (req, res) => {
+  res.status(200).json({ message: "cart working" });
+});
 //Get user cart items
-router.post("/get-items", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    const user = await UserModel.findOne({ email: req.body.email });
+    const user = await UserModel.findOne({ email: req.headers.email });
     if (!user) {
       return res.status(403).json({ message: "no user found" });
     }
