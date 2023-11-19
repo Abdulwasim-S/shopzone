@@ -13,7 +13,7 @@ router.post("/get-items", async (req, res) => {
     const items = await CartModel.find();
     res.status(200).json({ message: "cart items", items });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({ error });
   }
 });
 //Add user cart items
@@ -29,7 +29,7 @@ router.post("/add-item", async (req, res) => {
     }).save();
     res.status(200).json({ message: "cart items", cartItems });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({ error });
   }
 });
 //delete user cart items
@@ -41,7 +41,7 @@ router.delete("/:id", async (req, res) => {
     });
     res.status(200).json({ message: "Deleted Success", id });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({ error });
   }
 });
 export const CartPage = router;
