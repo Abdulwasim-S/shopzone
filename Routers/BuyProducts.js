@@ -32,7 +32,7 @@ router.put("/:id", async (req, res) => {
         order_status: req.body.status,
       }
     )
-      .then((updated_product) =>
+      .then((updated_order) =>
         res.status(200).json({ message: "Update Success", updated_order })
       )
       .catch((error) => {
