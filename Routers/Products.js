@@ -45,6 +45,7 @@ router.put("/:id", async (req, res) => {
         image_url: req.body.image_url,
         price: req.body.price,
         description: req.body.description,
+        status: req.body.status,
       }
     )
       .then((updated_product) =>
