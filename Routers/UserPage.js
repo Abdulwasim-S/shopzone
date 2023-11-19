@@ -26,7 +26,12 @@ router.post("/login", async (req, res) => {
     const token = await generateUserToken(req.body.email);
     res
       .status(200)
-      .json({ message: "login success", token, email: user.email });
+      .json({
+        message: "login success",
+        token,
+        email: user.email,
+        userName: user.userName,
+      });
   } catch (error) {
     console.log(error);
   }
