@@ -31,16 +31,10 @@ router.put("/:id", async (req, res) => {
       {
         order_status: req.body.status,
       }
-    )
-      .then((updated_order) =>
-        res.status(200).json({ message: "Update Success", updated_order })
-      )
-      .catch((error) => {
-        console.log(error);
-        res.status(500).json({ message: "Unable to Update", error });
-      });
+    );
+    res.status(200).json({ message: "Update Success", item: updated_order });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({ message: "Unable to Update", error });
   }
 });
 
