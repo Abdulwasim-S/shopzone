@@ -64,4 +64,14 @@ router.post("/myorders", async (req, res) => {
   }
 });
 
+//All orders
+router.get("/orders", async (req, res) => {
+  try {
+    const items = await OrderModel.find();
+    res.status(200).json({ message: "Orders", items });
+  } catch (error) {
+    res.status(500).json({ message: "error", error });
+  }
+});
+
 export const UserPage = router;
