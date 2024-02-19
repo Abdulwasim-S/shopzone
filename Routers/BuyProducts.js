@@ -22,7 +22,7 @@ router.post("/addProduct", async (req, res) => {
   }
 });
 
-//Update Order
+//Update Order code
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
