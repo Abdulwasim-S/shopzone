@@ -33,7 +33,7 @@ router.post("/login", async (req, res) => {
     console.log(error);
   }
 });
-//Admin signup
+//Admin SignUp
 router.post("/signup", async (req, res) => {
   try {
     const admin = await AdminModel.findOne({ email: req.body.email });
